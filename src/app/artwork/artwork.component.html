@@ -1,0 +1,31 @@
+<app-header></app-header>
+
+<div class="artwork-container container">
+  <div *ngFor="let item of departments">
+    <p-carousel
+      [value]="imageItems"
+      styleClass="custom-carousel"
+      [numVisible]="3"
+      [numScroll]="1"
+      [circular]="true"
+      [autoplayInterval]="3000"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template pTemplate="header">
+        <h5 class="text">{{ item.displayName }}</h5>
+      </ng-template>
+      <ng-template let-data pTemplate="item">
+        <div class="artwork-item">
+          <div class="artwork-item-content">
+            <div>
+              <img src="{{ data.img }}" width="100%" />
+              <p class="mt-2" (click)="open(data.img, data.title)">
+                {{ data.title }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+</div>
